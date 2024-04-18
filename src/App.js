@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Home from './screens/Home';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Signup from './screens/Signup';
+import Login from './screens/Login';
+import FoodEast from './screens/FoodEast';
+import FoodWest from './screens/FoodWest';
+import { CartProvider } from './components/ContextReducer';
+
+import MyProfile from './screens/MyProfile';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartProvider>
+      <Router>
+      <div>
+        <Routes>
+          <Route exact path="/" element={ <Home></Home> } />
+          <Route exact path="/login" element={ <Login></Login> } />
+          <Route exact path="/signup" element={ <Signup></Signup> } />
+          <Route exact path="/eastShop" element={ <FoodEast></FoodEast> } />
+          <Route exact path="/westShop" element={ <FoodWest></FoodWest> } />
+          <Route exact path="/myprofile" element={ <MyProfile></MyProfile> } />
+        </Routes>
+      </div>
+    </Router>
+    </CartProvider>
   );
 }
 
 export default App;
+//<div style={{ fontSize: '5rem' }}>Hello world</div>

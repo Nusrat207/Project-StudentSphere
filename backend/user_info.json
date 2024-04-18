@@ -1,0 +1,23 @@
+[
+    {
+        "name" : "nusrat jahan",
+        "student_id" : "210041207",
+        "mail" : "mail@mail.com",
+        "phone" : "123456",
+        "password" : "abcd123"
+    },
+    {
+        "name" : "nafisa",
+        "student_id" : "210041231",
+        "mail" : "naf2024@mail.com",
+        "phone" : "981023",
+        "password" : "pw1234"
+    },
+    {
+        "name" : "nuha",
+        "student_id" : "210041241",
+        "mail" : "masnun@mail.com",
+        "phone" : "019230284",
+        "password" : "pass12"
+    }
+]

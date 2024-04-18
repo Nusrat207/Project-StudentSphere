@@ -1,0 +1,17 @@
+.custom-navbar {
+    height: 60px; 
+    background-image: linear-gradient(to top,  #17544f, #60a4ab);
+
+  }
+
+  .heading-container {
+    background-image: linear-gradient(to bottom,  #17544f, #60a4ab);
+
+    padding: 5px;
+  }
+  
+  .heading-text {
+    font-family: 'CoolFont', sans-serif; 
+    font-size: 3.5rem; 
+    color: white; 
+  }
