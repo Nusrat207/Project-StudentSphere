@@ -24,7 +24,6 @@ const mongoDB = async () => {
         const meal = await meals.find({}).toArray();
         global.mealtype = meal;
         //console.log( global.mealtype);
-
         //const userData = mongoose.connection.db.collection("user_info");
         //const dataUser = await userData.find({}).toArray();
         //global.user_data= dataUser;

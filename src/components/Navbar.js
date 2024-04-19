@@ -7,6 +7,7 @@ import personGear from '../components/person-gear.svg'
 import cartIcon from '../components/cart-check.svg'
 import Modal from '../Modal';
 import Cart from '../screens/Cart';
+import Bag from '../components/bag.svg'
 import { Badge } from 'react-bootstrap';
 import { useCart } from './ContextReducer';
 
@@ -86,9 +87,14 @@ export default function Navbar() {
             </div>
 
             <div className="navbar-nav d-flex align-items-center" >
+            <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold', marginRight: '9px' }}>
+                <img src={Bag} alt="bag" style={{ width: '25px', marginRight: '9px' }} />
+                </div>
+               
+
               <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold', marginRight: '9px' }} onClick={loadCart} >
                 <img src={cartIcon} alt="Cart Icon" style={{ width: '25px', marginRight: '9px' }} />
-                Food Cart {}  {data.length !== 0 ? <Badge pill bg="danger">{data.length}</Badge> : null} </div>
+                {/* Food Cart */} {}  {data.length !== 0 ? <Badge pill bg="danger">{data.length}</Badge> : null} </div>
                 {cartView ? <Modal onClose={() => setcartView(false)}><Cart></Cart></Modal> : ""}
               {/* <div>
                 <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold' }} to="/mp">My Profile</div> 
@@ -97,6 +103,7 @@ export default function Navbar() {
                   <div className="btn bg-white text-danger mx-1" style={{ fontSize: '1.3rem', fontWeight: 'bold' }} onClick={handleLogout}>Logout</div>
                 </div>
     </div> */}
+
               <div className="navbar-nav">
                 <div className="dropdown">
                   <button className="btn bg-white mx-1 dropdown-toggle" style={{ color: '#1a5c56', fontWeight: 'bold' }} type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">

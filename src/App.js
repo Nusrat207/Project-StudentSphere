@@ -14,6 +14,7 @@ import FoodWest from './screens/FoodWest';
 import { CartProvider } from './components/ContextReducer';
 
 import MyProfile from './screens/MyProfile';
+import Merch from './screens/Merch';
 function App() {
   return (
     <CartProvider>
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/eastShop" element={ <FoodEast></FoodEast> } />
           <Route exact path="/westShop" element={ <FoodWest></FoodWest> } />
           <Route exact path="/myprofile" element={ <MyProfile></MyProfile> } />
+          <Route exact path="/merch" element={ <Merch></Merch> } />
         </Routes>
       </div>
     </Router>
