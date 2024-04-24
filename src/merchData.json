@@ -1,0 +1,40 @@
+[
+    {
+      "name" : "CGPA matters T-shirt",
+      "image" : "",
+      "price" : "450",
+      "tag" : "central",
+      "season" : "summer",
+      "type":"tshirt",
+      "color": "black white red"
+    },
+    {
+      "name" : "CSE Cricket Jersey Half-sleeved",
+      "image" : "",
+      "price" : "560",
+      "tag" : "dept CSE",
+      "season" : "summer",
+      "type":"jersey",
+      "color": "blue"
+    },
+    {
+        "name" : "CSE Cricket Jersey Full-sleeved",
+        "image" : "",
+        "price" : "560",
+        "tag" : "dept CSE",
+        "season" : "summer",
+        "type":"jersey",
+        "color": "blue"
+      },
+
+      {
+        "name" : "CSE Letterman Jacket",
+        "image" : "",
+        "price" : "1099",
+        "tag" : "dept CSE",
+        "season" : "winter",
+        "type":"jacket",
+        "color": "blue"
+      }
+
+  ]

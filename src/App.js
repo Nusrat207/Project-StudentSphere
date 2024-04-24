@@ -12,12 +12,13 @@ import Login from './screens/Login';
 import FoodEast from './screens/FoodEast';
 import FoodWest from './screens/FoodWest';
 import { CartProvider } from './components/ContextReducer';
+import { CartProvider2 } from './components/contextred2';
 
 import MyProfile from './screens/MyProfile';
 import Merch from './screens/Merch';
 function App() {
   return (
-    <CartProvider>
+    <CartProvider> <CartProvider2>
       <Router>
       <div>
         <Routes>
@@ -30,7 +31,7 @@ function App() {
           <Route exact path="/merch" element={ <Merch></Merch> } />
         </Routes>
       </div>
-    </Router>
+    </Router> </CartProvider2>
     </CartProvider>
   );
 }

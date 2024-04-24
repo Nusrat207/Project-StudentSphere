@@ -6,18 +6,24 @@ import { Link, useNavigate } from 'react-router-dom'
 import personGear from '../components/person-gear.svg'
 import cartIcon from '../components/cart-check.svg'
 import Modal from '../Modal';
+import Modal2 from '../Modal2';
 import Cart from '../screens/Cart';
 import Bag from '../components/bag.svg'
 import { Badge } from 'react-bootstrap';
 import { useCart } from './ContextReducer';
+import { useCart2 } from './contextred2';
+
+import MerchCart from '../screens/MerchCart';
 
 export default function Navbar() {
   const [cartView, setcartView] = useState(false);
+  const [cartView2, setcartView2] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  let data = useCart();
-
+  let foodata = useCart();
   
+  let merdata=useCart2();
+ 
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("authtoken");
@@ -26,7 +32,11 @@ export default function Navbar() {
 
   const loadCart = () => {
     setcartView(true)
-}
+  }
+
+  const loadCart2 = () => {
+    setcartView2(true)
+  }
   return (
     !localStorage.getItem("authtoken") ? (
       <div>
@@ -87,14 +97,15 @@ export default function Navbar() {
             </div>
 
             <div className="navbar-nav d-flex align-items-center" >
-            <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold', marginRight: '9px' }}>
+            <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold', marginRight: '9px' }} onClick={loadCart2}>
                 <img src={Bag} alt="bag" style={{ width: '25px', marginRight: '9px' }} />
-                </div>
+                {merdata.length !== 0 ? <Badge pill bg="danger">{merdata.length}</Badge> : null} 
+                </div> {cartView2 ? <Modal2 onClose={() => setcartView2(false)}><MerchCart></MerchCart></Modal2> : ""}
                
-
               <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold', marginRight: '9px' }} onClick={loadCart} >
                 <img src={cartIcon} alt="Cart Icon" style={{ width: '25px', marginRight: '9px' }} />
-                {/* Food Cart */} {}  {data.length !== 0 ? <Badge pill bg="danger">{data.length}</Badge> : null} </div>
+                {/* Food Cart */} {}  {foodata.length !== 0 ? <Badge pill bg="danger">{foodata.length}</Badge> : null} 
+                </div>
                 {cartView ? <Modal onClose={() => setcartView(false)}><Cart></Cart></Modal> : ""}
               {/* <div>
                 <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold' }} to="/mp">My Profile</div> 
