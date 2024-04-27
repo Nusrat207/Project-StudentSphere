@@ -14,8 +14,14 @@ import FoodWest from './screens/FoodWest';
 import { CartProvider } from './components/ContextReducer';
 import { CartProvider2 } from './components/contextred2';
 
-import MyProfile from './screens/MyProfile';
+
 import Merch from './screens/Merch';
+import MyProfile from './screens/MyProfile';
+import EditProfile from './screens/editProfile';
+import Tshirt from './screens/Tshirt';
+import CseMerch from './screens/cseMerch';
+
+
 function App() {
   return (
     <CartProvider> <CartProvider2>
@@ -29,6 +35,9 @@ function App() {
           <Route exact path="/westShop" element={ <FoodWest></FoodWest> } />
           <Route exact path="/myprofile" element={ <MyProfile></MyProfile> } />
           <Route exact path="/merch" element={ <Merch></Merch> } />
+          <Route exact path="/edit-profile" element={ <EditProfile/>} />
+          <Route exact path="/tshirt" element={ <Tshirt></Tshirt> } />
+          <Route exact path="/cse" element={ <CseMerch></CseMerch> } />
         </Routes>
       </div>
     </Router> </CartProvider2>
@@ -38,3 +47,4 @@ function App() {
 
 export default App;
 //<div style={{ fontSize: '5rem' }}>Hello world</div>
+// <Route exact path="//edit-profile" element={ <MyProfile></MyProfile> } />

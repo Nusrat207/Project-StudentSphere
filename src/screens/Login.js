@@ -29,26 +29,16 @@ export default function Login() {
             alert("Enter valid credentials")
         } else{
             localStorage.setItem("authtoken", json.authtoken);
+            localStorage.setItem("name", json.userData.name);
+            localStorage.setItem("mail", json.userData.mail);
+            localStorage.setItem("phone", json.userData.phone);
+            localStorage.setItem("dept", json.userData.dept);
+
             localStorage.setItem("student_id", credentials.student_id);
             console.log(localStorage.getItem("authtoken"));
-          /*  let sid = credentials.student_id;
-            try {
-              let userData = await user.findOne({ sid });
-              if (!userData) {
-                  console.log("errorr");
-              }
 
-              let name = 'userData.name'
-              let mail = 'userData.mail';
-              let phone= 'userData.phone';
-              let dept='userData.dept';
-
-              localStorage.setItem("name", name);
-              localStorage.setItem("mail", mail);
-              localStorage.setItem("phone", phone);
-              localStorage.setItem("dept", dept); 
-              
-            } catch(error){ console.log(error)} */
+            console.log(localStorage.getItem("name"));
+         
 
             navigate("/");
         }
@@ -125,3 +115,21 @@ export default function Login() {
   );
 }
 
+ /*  let sid = credentials.student_id;
+            try {
+              let userData = await user.findOne({ sid });
+              if (!userData) {
+                  console.log("errorr");
+              }
+
+              let name = 'userData.name'
+              let mail = 'userData.mail';
+              let phone= 'userData.phone';
+              let dept='userData.dept';
+
+              localStorage.setItem("name", name);
+              localStorage.setItem("mail", mail);
+              localStorage.setItem("phone", phone);
+              localStorage.setItem("dept", dept); 
+              
+            } catch(error){ console.log(error)} */

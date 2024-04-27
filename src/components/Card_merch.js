@@ -12,7 +12,6 @@ export default function Card_merch(props) {
         await dispatch2({ type: "ADD2", id: props.merchitem._id, name: props.merchitem.name, size: size, price: finalPrice, quantity: quantity, image: props.merchitem.image })
        // console.log(data);
     }
-
     let finalPrice = (quantity * parseInt(props.merchitem.price));
     return (
 

@@ -72,8 +72,8 @@ export default function () {
                                             </button>
                                             <div className="collapse" id="winter-collapse">
                                                 <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                    <li><Link to="hoodie" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }} >Hoodie</Link></li>
-                                                    <li><Link to="sweatshirt" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }}>Sweatshirt</Link></li>
+                                                    <li><Link to="/hoodie" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }} >Hoodie</Link></li>
+                                                    <li><Link to="/sweatshirt" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }}>Sweatshirt</Link></li>
 
                                                 </ul> </div>
                                             <li>
@@ -90,7 +90,8 @@ export default function () {
                                     </button>
                                     <div className="collapse" id="dashboard-collapse">
                                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><Link to="/cse" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }} >CSE</Link></li>
+                                          
+                                        <li><Link to="/cse" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }} >CSE</Link></li>
                                             <li><Link to="/eee" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }}>EEE</Link></li>
                                             <li><Link to="/mpe" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }}>MPE</Link></li>
                                             <li><Link to="/cee" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }}>CEE</Link></li>
@@ -140,7 +141,7 @@ export default function () {
                             <div className='row'>
                             {
                                 merchItem != [] ? merchItem.filter((item) =>
-                                    (item.name.toLowerCase().includes(search.toLowerCase()))
+                                (item.name.toLowerCase().includes(search.toLowerCase()) && item.type === "tshirt" && item.tag === "central")
                                 ).map(filterItems => {
                                     return (
                                         <div key={filterItems._id} className='col-12 col-md-4 mb-4'>
@@ -161,45 +162,3 @@ export default function () {
     );
 
 }
-/*
-{require('./cse_cricket1.jpg')} 
-{require('./cse_crick.jpg')} 
-{require('./cgpa.jpg')} 
-{require('./cse_letter.jpg')} 
-*/
-
-/* 
-                        <div className='fs-1'  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '25vh' }}>merch sob</div>
-                        <div className='fs-1'  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '25vh' }}>ekhane hobe</div>
-                        <div className='fs-1'  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '25vh' }}>meals er</div>
-                        <div className='fs-1'  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '25vh' }}>cards er moto</div>
-
-
-
-<li className="mb-1">
-                                    <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false" style={{ color: 'black', fontSize: '1.3rem', fontWeight: 'bold' }}>
-                                        <img src={Arrow} alt="arrow" style={{ width: '11px', height: '11px' }} />   Orders 
-                                    </button>
-                                    <div className="collapse" id="orders-collapse">
-                                        <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem' }} >New</Link></li>
-                                            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem' }}> Processed</Link></li>
-                                            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem' }}>Shipped</Link></li>
-                                            <li><Link to="#" className="link-dark rounded " style={{ textDecoration: 'none', fontSize: '1rem' }} >Returned</Link></li>
-                                        </ul>
-                                    </div>
-                                </li> */
-
-/*  <li className="mb-1">
-    <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false" style={{ color: 'black', fontSize: '1.3rem', fontWeight: 'bold' }}>
-        <img src={Arrow} alt="arrow" style={{ width: '11px', height: '11px' }} />   Account 
-    </button>
-    <div className="collapse" id="account-collapse">
-        <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem' }}>New...</Link></li>
-            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem' }}>Profile</Link></li>
-            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem' }}>Settings</Link></li>
-            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem' }}>Sign out</Link></li>
-        </ul>
-    </div>
-</li> */

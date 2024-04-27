@@ -27,6 +27,11 @@ export default function Navbar() {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("authtoken");
+    localStorage.removeItem("student_id");
+    localStorage.removeItem("name");
+    localStorage.removeItem("mail");
+    localStorage.removeItem("phone");
+    localStorage.removeItem("dept");
     navigate("/login");
   }
 
