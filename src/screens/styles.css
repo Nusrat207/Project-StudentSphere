@@ -21,4 +21,21 @@
     background-color: #286660; 
     color: white; 
   }
-  
+ 
+  .hero-content {
+    text-align: center;
+    color: white;
+    font-size: 7rem; 
+  font-weight: bold;
+  }
+  .hero-container{
+    background-image: url('./homee.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ 

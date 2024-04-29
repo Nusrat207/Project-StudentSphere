@@ -15,8 +15,17 @@ const OrderSchema = new Schema({
     order_date: {
         type: Date,
         required: true,
-        default: Date.now // Set the default value to the current date and time
+        default: Date.now 
     },
+    location: {
+        type: String,
+        required: true
+    },
+    
+    payment: {
+        type: String,
+        required: true
+    }
 
    
 });

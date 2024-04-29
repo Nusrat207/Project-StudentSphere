@@ -32,7 +32,6 @@ const mongoDB = async () => {
         const Merch = await merchh.find({}).toArray();
         global.MerchData= Merch;
         //console.log( global.MerchData);
-
         
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
