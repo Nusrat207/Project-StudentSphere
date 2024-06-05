@@ -19,11 +19,6 @@ export default function () {
     const [merchItem, setmerchItem] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
 
-    const navigate = useNavigate();
-    const handleReset = () =>{
-        setFilteredItems([]);
-        navigate("/cse");
-    }
 
     const loadData = async () => {
         let response = await fetch("http://localhost:5000/api/MerchData", {
@@ -46,11 +41,17 @@ export default function () {
         const min = parseFloat(minPrice);
         const max = parseFloat(maxPrice);
         if (!isNaN(min) && !isNaN(max)) {
-            const filtered = merchItem.filter(item => item.price >= min && item.price <= max &&  
-            item.tag === "dept CSE");
+            const filtered = merchItem.filter(item => item.price >= min && item.price <= max &&  item.season === "summer" &&
+            item.tag === "central");
             setFilteredItems(filtered);
         }
     };
+
+    const navigate = useNavigate();
+    const handleReset = () =>{
+        setFilteredItems([]);
+        navigate("/summer");
+    }
 
     return (
         <div>
@@ -61,31 +62,31 @@ export default function () {
                 <div className="row">
                     {/* Sidebar */}
                     <div className="col-md-2 " style={{ paddingRight: '0px', paddingLeft: '0px' }} >
-                    
-                    <div className="flex-shrink-0 " style={{ width: '100%', height: '100%', paddingRight: '0px', backgroundColor: '#212529', paddingLeft: '25px', paddingTop: '10px' }}>
+
+                        <div className="flex-shrink-0 " style={{ width: '100%', height: '100%', paddingRight: '0px', backgroundColor: '#212529', paddingLeft: '25px', paddingTop: '10px' }}>
                             <div className="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                                <span className="fs-4 fw-semibold" style={{color:'white'}}>Categories</span>
+                                <span className="fs-4 fw-semibold" style={{ color: 'white' }}>Categories</span>
                             </div>
                             <ul className="list-unstyled ps-0">
                                 <li className="mb-1">
                                     <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" style={{ color: 'white', fontSize: '1.3rem', fontWeight: 'bold' }}>
-                            &gt;Central
+                                        &gt;Central
                                     </button>
                                     <div className="collapse show" id="home-collapse">
                                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                             {/* <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize:'1rem' }} >Summer</Link></li>
-                                            <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize:'1rem' }}>Winter</Link></li> */}
+                                        <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize:'1rem' }}>Winter</Link></li> */}
                                             <li>
-                                                <Link to="/summer" style={{ color: 'white', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '35px', textDecoration:'none' }}>
-                                                      Summer
+                                                <Link to="/summer" style={{ color: 'white', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '35px', textDecoration: 'none' }}>
+                                                    Summer
                                                 </Link>
-                                               
+
 
                                             </li>
-                                            <Link to="/winter"  style={{ color: 'white', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '35px', textDecoration:'none' }}>
-                                                 Winter
+                                            <Link to="/winter" style={{ color: 'white', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '35px', textDecoration: 'none' }}>
+                                                Winter
                                             </Link>
-                 
+
                                             <li>
 
                                             </li>
@@ -96,15 +97,15 @@ export default function () {
 
                                 <li className="mb-1">
                                     <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false" style={{ color: 'white', fontSize: '1.3rem', fontWeight: 'bold' }}>
-                     &gt; Departmental
+                                        &gt; Departmental
                                     </button>
                                     <div className="collapse" id="dashboard-collapse">
                                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small" >
-                                        <li><Link to="/cse"  style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color:'white' }} >CSE</Link></li>
-                                            <li><Link to="/eee"  style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color:'white'  }}>EEE</Link></li>
-                                            <li><Link to="/mpe"  style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color:'white'  }}>MPE</Link></li>
-                                            <li><Link to="/cee"  style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color:'white'  }}>CEE</Link></li>
-                                            <li><Link to="/btm"  style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color:'white'  }}>BTM</Link></li>
+                                            <li><Link to="/cse" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }} >CSE</Link></li>
+                                            <li><Link to="/eee" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>EEE</Link></li>
+                                            <li><Link to="/mpe" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>MPE</Link></li>
+                                            <li><Link to="/cee" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>CEE</Link></li>
+                                            <li><Link to="/btm" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>BTM</Link></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -138,7 +139,7 @@ export default function () {
                         <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{ paddingLeft: '0', width: '100%' }}>
                             <div className="carousel-caption d-none d-md-block" style={{ zIndex: "10", top: "0" }}>
                                 <div className="d-flex" >
-                                    <input className="form-control me-2 placeholder-dark" type="search" placeholder="Search" aria-label="Search" style={{ backgroundColor: 'white', color: 'black' }} value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+                                    <input className="form-control me-2 placeholder-dark" type="search" placeholder="Search" aria-label="Search" style={{ backgroundColor: 'white', color: 'black' }} value={search} onChange={(e) => { setSearch(e.target.value) }} />
                                     <button className="custom-button" type="submit">Search</button>
                                 </div>
                             </div>
@@ -165,14 +166,27 @@ export default function () {
                             </button>
                         </div>
                         <div>
-                        <div className='container'>
-                            <div className='row'>
-                            {
+                            <div className='container'>
+                                <div className='row'>
+                                    {/*
+                                merchItem != [] ? merchItem.filter((item) =>
+                                (item.name.toLowerCase().includes(search.toLowerCase()) && item.season === "summer" && item.tag === "central")
+                                ).map(filterItems => {
+                                    return (
+                                        <div key={filterItems._id} className='col-12 col-md-4 mb-4'>
+                                            <Card_merch merchitem={filterItems}
+                                            ></Card_merch>
+                                        </div>
+                                    )
+                                }) : <div>no data </div>
+                            */}
+                                    {
                                         (filteredItems.length > 0 ? filteredItems : merchItem.filter(item =>
                                             item.name.toLowerCase().includes(search.toLowerCase()) &&
                                             (!minPrice || item.price >= minPrice) &&
                                             (!maxPrice || item.price <= maxPrice) &&
-                                            item.tag === "dept CSE"
+                                            item.season === "summer" &&
+                                            item.tag === "central"
 
                                         )).map(filterItems => {
                                             return (
@@ -182,8 +196,9 @@ export default function () {
                                             );
                                         })
                                     }
-                        </div>
-                        </div> </div>
+
+                                </div>
+                            </div> </div>
 
                     </div>
                 </div>

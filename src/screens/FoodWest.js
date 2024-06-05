@@ -14,7 +14,7 @@ export default function  () {
     const [shop, setShop] = useState([]);
 
     const loadData = async () => {
-        let response = await fetch("http://localhost:4000/api/foodData", {
+        let response = await fetch("http://localhost:5000/api/foodData", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -45,8 +45,8 @@ export default function  () {
                     <div className="carousel-caption d-none d-md-block" style={{zIndex:"10"}}>
                         <div className="d-flex justify-content-center">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
-                            <button className="btn btn-outline-success" text-white bg-success type="submit">Search</button>
-                        </div>
+                          {/*  <button className="btn btn-outline-success" text-white bg-success type="submit">Search</button>
+                        */}    </div>
                     </div>
 
                     <div className="carousel-item active">

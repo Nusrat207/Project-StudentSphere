@@ -2,6 +2,8 @@ import React from 'react'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
 import { useState } from 'react';
 import jsPDF from 'jspdf';
+import bkash from './bkash.svg';
+import COD from './cod.png';
 import { ReactComponent as TrashIcon } from '../screens/trash.svg'
 export default function () {
     let data = useCart();
@@ -40,7 +42,7 @@ export default function () {
         orderData = data;
         //console.log(orderData.shop);
         orderDate = new Date();
-        let response = await fetch("http://localhost:4000/api/OrderData", {
+        let response = await fetch("http://localhost:5000/api/OrderData", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -172,14 +174,17 @@ export default function () {
                     <label className="form-label fs-4">Payment:</label>
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="paymentMethod" id="bkash" value="bkash" onChange={handlePaymentMethodChange} />
-                        <label className="form-check-label" htmlFor="bkash">Bkash</label>
+                        <label className="form-check-label" htmlFor="bkash">
+                        Bkash <img src={bkash} alt="Cart Icon" style={{ width: '55px', marginRight:'0px' }} /> </label>
                     </div>
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" onChange={handlePaymentMethodChange} />
-                        <label className="form-check-label" htmlFor="cash">Cash on Delivery</label>
+                        <label className="form-check-label" htmlFor="cash">
+                        Cash on Delivery <img src={COD} alt="Cart Icon" style={{ width: '25px', marginRight:'0px' }} />
+                            </label>
                     </div>
                 </div>
-                {/* Render the div for Bkash payment if Bkash is selected */}
+               
                 {paymentMethod === "bkash" && (
                     <div>
                         <label htmlFor="phoneNumber" className="form-label fs-4">Phone Number:</label>

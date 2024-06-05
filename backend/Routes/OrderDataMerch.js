@@ -6,15 +6,11 @@ router.post('/OrderDataMerch', async (req, res) => {
     let data = req.body.order_data
     await data.splice(0,0,{order_date:req.body.order_date})
 
-    //console.log("1231242343242354",req.body.student_id, req.body.order_date)
-
-    //if email not exisitng in db then create: else: InsertMany()
     let sID = await order.findOne({ 'student_id': req.body.student_id })    
     console.log(sID)
     if (sID===null) {
         try {
-            console.log(data)
-            //console.log("1231242343242354",req.body.email)
+            //console.log(data)
             await order.create({
                 student_id: req.body.student_id,
                 order_data:[data]
@@ -39,5 +35,17 @@ router.post('/OrderDataMerch', async (req, res) => {
         }
     }
 })
+
+router.post('/myMerchOrder', async (req, res) => {
+    try {
+        //console.log(req.body.student_id)
+        let sId = await order.findOne({ 'student_id': req.body.student_id })
+        //console.log(sId)
+        res.json({orderData:sId})
+    } catch (error) {
+        res.send("Error",error.message)
+    }
+});
+
 
 module.exports = router;

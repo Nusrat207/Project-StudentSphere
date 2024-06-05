@@ -34,7 +34,7 @@ export default function () {
         const { currentPw, dept, mail, phone, newPw} = credentials;
         const studentIdToUpdate = localStorage.getItem("student_id");
     
-        const response = await fetch(`http://localhost:4000/api/updateUser/${studentIdToUpdate}`, {
+        const response = await fetch(`http://localhost:5000/api/updateUser/${studentIdToUpdate}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

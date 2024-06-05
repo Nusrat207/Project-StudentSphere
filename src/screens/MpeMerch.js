@@ -22,9 +22,8 @@ export default function () {
     const navigate = useNavigate();
     const handleReset = () =>{
         setFilteredItems([]);
-        navigate("/cse");
+        navigate("/mpe");
     }
-
     const loadData = async () => {
         let response = await fetch("http://localhost:5000/api/MerchData", {
             method: "POST",
@@ -47,7 +46,7 @@ export default function () {
         const max = parseFloat(maxPrice);
         if (!isNaN(min) && !isNaN(max)) {
             const filtered = merchItem.filter(item => item.price >= min && item.price <= max &&  
-            item.tag === "dept CSE");
+            item.tag === "dept MPE");
             setFilteredItems(filtered);
         }
     };
@@ -113,6 +112,7 @@ export default function () {
 
 
 
+
                                 <li className="mb-1" style={{ marginLeft: '10px' }}>
                                     <div className="d-flex align-items-center">
                                         <span className="fs-5 fw-semibold" style={{ color: 'white', marginBottom: '10px' }}>Price Range</span>
@@ -172,7 +172,7 @@ export default function () {
                                             item.name.toLowerCase().includes(search.toLowerCase()) &&
                                             (!minPrice || item.price >= minPrice) &&
                                             (!maxPrice || item.price <= maxPrice) &&
-                                            item.tag === "dept CSE"
+                                            item.tag === "dept MPE"
 
                                         )).map(filterItems => {
                                             return (

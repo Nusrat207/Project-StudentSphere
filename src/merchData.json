@@ -35,6 +35,207 @@
         "season" : "winter",
         "type":"jacket",
         "color": "blue"
+      },
+
+
+
+      {
+        "name" : "IUTian Brotherhood Hoodie",
+        "image" : "brotherhood.jpg",
+        "price" : "680",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"hoodie",
+        "color": "brown"
+      },
+      {
+        "name" : "BTM Football Jersey",
+        "image" : "btm_foot.jpg",
+        "price" : "499",
+        "tag" : "dept BTM",
+        "season" : "summer",
+        "type":"jersey",
+        "color": "white"
+      },
+      {
+        "name" : "BTM Football Jersey",
+        "image" : "btm_foot2.jpg",
+        "price" : "499",
+        "tag" : "dept BTM",
+        "season" : "summer",
+        "type":"jersey",
+        "color": "white"
+      },
+
+      {
+        "name" : "BTM Letterman",
+        "image" : "btm_letterman.jpg",
+        "price" : "1099",
+        "tag" : "dept BTM",
+        "season" : "winter",
+        "type":"jacket",
+        "color": "black"
+      },
+      {
+        "name" : "MPE Letterman",
+        "image" : "mpe_letterman.jpg",
+        "price" : "1099",
+        "tag" : "dept MPE",
+        "season" : "winter",
+        "type":"jacket",
+        "color": "black"
+      },
+      {
+        "name" : "EEE Letterman",
+        "image" : "eee_letterman.jpg",
+        "price" : "1099",
+        "tag" : "dept EEE",
+        "season" : "winter",
+        "type":"jacket",
+        "color": "black"
+      },
+
+      {
+        "name" : "IUT cattos Hoodie",
+        "image" : "cat_hoodie.jpg",
+        "price" : "799",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"hoodie",
+        "color": "black"
+      },
+      {
+        "name" : "CEE Football Jersey",
+        "image" : "cee_jersey.jpg",
+        "price" : "499",
+        "tag" : "dept CEE",
+        "season" : "summer",
+        "type":"jersey",
+        "color": "black-green"
+      },
+      {
+        "name" : "CSE Football Jersey",
+        "image" : "cse_foot.jpg",
+        "price" : "499",
+        "tag" : "dept CSE",
+        "season" : "summer",
+        "type":"jersey",
+        "color": "black-blue"
+      },
+      {
+        "name" : "CSE Jacket",
+        "image" : "cse_jacket.jpg",
+        "price" : "950",
+        "tag" : "dept CSE",
+        "season" : "winter",
+        "type":"jersey",
+        "color": "navy-blue"
+      },
+      {
+        "name" : "EEE Football Jersey",
+        "image" : "eee_football.jpg",
+        "price" : "499",
+        "tag" : "dept EEE",
+        "season" : "summer",
+        "type":"jersey",
+        "color": "black-yellow"
+      },
+      {
+        "name" : "EEE Football Jersey",
+        "image" : "eee_foot.jpg",
+        "price" : "499",
+        "tag" : "dept EEE",
+        "season" : "summer",
+        "type":"jersey",
+        "color": "white-yellow"
+      },
+
+      {
+        "name" : "IUTian Hoodie (Black)",
+        "image" : "hoodie_black.jpg",
+        "price" : "699",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"hoodie",
+        "color": "black"
+      },
+
+      {
+        "name" : "IUTian Hoodie (Green)",
+        "image" : "hoodie_green.jpg",
+        "price" : "699",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"hoodie",
+        "color": "black"
+      },
+      {
+        "name" : "IUTian Hoodie (Pink)",
+        "image" : "hoodie_pink.jpg",
+        "price" : "699",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"hoodie",
+        "color": "black"
+      },
+
+      {
+        "name" : "Impulse Jacket",
+        "image" : "impulse.jpg",
+        "price" : "799",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"jacket",
+        "color": "black"
+      },
+
+      {
+        "name" : "IUTian Varsity Jacket",
+        "image" : "iutian_varsity.jpg",
+        "price" : "899",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"jacket",
+        "color": "black"
+      },
+
+      {
+        "name" : "Life Matter T-shirt",
+        "image" : "life_matters.jpg",
+        "price" : "440",
+        "tag" : "central",
+        "season" : "summer",
+        "type":"tshirt",
+        "color": "black"
+      },
+
+      {
+        "name" : "IUTian Sweatshirt",
+        "image" : "sweat.jpg",
+        "price" : "699",
+        "tag" : "central",
+        "season" : "winter",
+        "type":"sweatshirt",
+        "color": "black"
+      },
+
+      {
+        "name" : "IUTian T-shirt",
+        "image" : "iut_tshirt.jpg",
+        "price" : "450",
+        "tag" : "central",
+        "season" : "summer",
+        "type":"tshirt",
+        "color": "white"
       }
+
+
+
+
+
+
+
+      
+
 
   ]

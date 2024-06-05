@@ -3,8 +3,8 @@ import {Link, useNavigate} from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import Top from '../components/Top';
 import Footer from '../components/Footer';
-
-
+import './buton.css';
+import './bbton.css';
 /* const globalVariables = {
                 
               }; */
@@ -15,7 +15,7 @@ export default function Login() {
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        const response = await fetch("http://localhost:4000/api/loginUser",{
+        const response = await fetch("http://localhost:5000/api/loginUser",{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -68,35 +68,35 @@ export default function Login() {
                     </div>
                 </nav>
       </div>
-      <section className="vh-100" style={{ backgroundColor: '#defaf6' }}>
+      <section className="vh-100" style={{ backgroundColor: 'transparent' }}>
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-12 col-xl-11" >
-              <div className="card text-black" style={{ borderRadius: '5px', backgroundColor:'#468187' }}>
+              <div className="card text-black" style={{ borderRadius: '5px', backgroundColor:'#468187',backgroundImage: 'linear-gradient(45deg, rgba(13, 0, 61,0.2) 0%, rgba(13, 0, 61,0.2) 16.667%,rgba(14, 79, 102,0.2) 16.667%, rgba(14, 79, 102,0.2) 33.334%,rgba(15, 158, 143,0.2) 33.334%, rgba(15, 158, 143,0.2) 50.001%,rgba(16, 198, 163,0.2) 50.001%, rgba(16, 198, 163,0.2) 66.668%,rgba(15, 119, 122,0.2) 66.668%, rgba(15, 119, 122,0.2) 83.335%,rgba(14, 40, 81,0.2) 83.335%, rgba(14, 40, 81,0.2) 100.002%),linear-gradient(22.5deg, rgba(13, 0, 61,0.2) 0%, rgba(13, 0, 61,0.2) 16.667%,rgba(14, 79, 102,0.2) 16.667%, rgba(14, 79, 102,0.2) 33.334%,rgba(15, 158, 143,0.2) 33.334%, rgba(15, 158, 143,0.2) 50.001%,rgba(16, 198, 163,0.2) 50.001%, rgba(16, 198, 163,0.2) 66.668%,rgba(15, 119, 122,0.2) 66.668%, rgba(15, 119, 122,0.2) 83.335%,rgba(14, 40, 81,0.2) 83.335%, rgba(14, 40, 81,0.2) 100.002%),linear-gradient(0deg, rgba(13, 0, 61,0.2) 0%, rgba(13, 0, 61,0.2) 16.667%,rgba(14, 79, 102,0.2) 16.667%, rgba(14, 79, 102,0.2) 33.334%,rgba(15, 158, 143,0.2) 33.334%, rgba(15, 158, 143,0.2) 50.001%,rgba(16, 198, 163,0.2) 50.001%, rgba(16, 198, 163,0.2) 66.668%,rgba(15, 119, 122,0.2) 66.668%, rgba(15, 119, 122,0.2) 83.335%,rgba(14, 40, 81,0.2) 83.335%, rgba(14, 40, 81,0.2) 100.002%),linear-gradient(90deg, rgb(73, 73, 73),rgb(94, 94, 94))' }}>
                 <div className="card-body p-md-1">
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 ">
-                      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
-                      <Form className="mx-1 mx-md-4" style={{ fontSize:'1.25rem', fontWeight:'bold', color:'black' }} onSubmit={handleSubmit}  >
+                      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style={{color:'white'}}>Login</p>
+                      <Form className="mx-1 mx-md-4" style={{ fontSize:'1.25rem', fontWeight:'bold', color:'white' }} onSubmit={handleSubmit}  >
                         <Form.Group className="mb-4" controlId="formBasicStudentId">
                           <Form.Label>Student ID</Form.Label>
-                          <Form.Control type="text" placeholder="Enter your student ID" name='student_id' value={credentials.student_id} onChange={onChange} />
+                          <Form.Control type="text" placeholder="Enter your student ID" name='student_id' value={credentials.student_id} onChange={onChange} className="placeholder-black" style={{ backgroundColor: 'white', color: 'black', borderRadius: '12px', border: '1px solid black'  }} />
                         </Form.Group>
                         <Form.Group className="mb-4" controlId="formBasicPassword">
                           <Form.Label>Password</Form.Label>
-                          <Form.Control type="password" placeholder="Enter your password"  name='password' value={credentials.password} onChange={onChange}  />
+                          <Form.Control type="password" placeholder="Enter your password"  name='password' value={credentials.password} onChange={onChange} className="placeholder-black" style={{ backgroundColor: 'white', color: 'black', borderRadius: '12px', border: '1px solid black'  }}  />
                         </Form.Group>
                         <div className="d-flex justify-content-between align-items-center mb-4">
                           <div>
-                            <Button variant="link" style={{ color: 'black' }}>Forgot password?</Button>
+                            <div variant="link" style={{ color: 'black', fontSize:'15px', fontWeight:'normal' }}>Forgot password?</div>
                           </div>
                           
                         </div>
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <Button variant="primary" type="submit" className="btn-lg">Login</Button>
+                          <Button id="buton" style={{backgroundColor:'white', color:'black'}} type="submit" className="btn-lg">Login</Button>
                         </div>
-                        <div>
-                            <p className="mb-3">Don't have an account?  <Link to="/signup" className='btn btn-danger'>Sign Up</Link> </p>
+                        <div style={{paddingTop:'20px'}}>
+                            <p className="mb-3" style={{paddingRight:'120px'}}>Don't have an account?  <Link to="/signup" id='Link' className='btn' style={{backgroundColor:'transparent', borderColor:'white', borderWidth:'2.5px'}}>Sign Up</Link> </p>
                           </div>
                       </Form>
                     </div>

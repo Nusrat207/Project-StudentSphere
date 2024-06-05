@@ -29,7 +29,7 @@
   font-weight: bold;
   }
   .hero-container{
-    background-image: url('./homee.jpg');
+    background-image: url('./homee1.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -37,5 +37,6 @@
     justify-content: center;
     align-items: center;
   }
-
- 
+  .placeholder-black::placeholder {
+    color: #7c9490;
+}

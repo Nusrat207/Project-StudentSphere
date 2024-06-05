@@ -17,7 +17,7 @@ export default function () {
 
 
     const loadData = async () => {
-        let response = await fetch("http://localhost:4000/api/MerchData", {
+        let response = await fetch("http://localhost:5000/api/MerchData", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

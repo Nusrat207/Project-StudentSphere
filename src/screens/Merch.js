@@ -1,23 +1,32 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Top from '../components/Top'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer';
 import './styles.css';
-import Arrow from '../screens/rightsym.svg'
+import Arrow from '../screens/r_arrow.svg'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Card_merch from '../components/Card_merch';
 
 export default function () {
 
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
+
     const [search, setSearch] = useState('');
 
     const [merchItem, setmerchItem] = useState([]);
+    const [filteredItems, setFilteredItems] = useState([]);
 
+    const navigate = useNavigate();
+    const handleReset = () =>{
+        setFilteredItems([]);
+        navigate("/merch");
+    }
 
     const loadData = async () => {
-        let response = await fetch("http://localhost:4000/api/MerchData", {
+        let response = await fetch("http://localhost:5000/api/MerchData", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -33,6 +42,15 @@ export default function () {
         loadData()
     }, [])
 
+    const handlePriceFilter = () => {
+        const min = parseFloat(minPrice);
+        const max = parseFloat(maxPrice);
+        if (!isNaN(min) && !isNaN(max)) {
+            const filtered = merchItem.filter(item => item.price >= min && item.price <= max);
+            setFilteredItems(filtered);
+        }
+    };
+
     return (
         <div>
             <Top />
@@ -42,40 +60,31 @@ export default function () {
                 <div className="row">
                     {/* Sidebar */}
                     <div className="col-md-2 " style={{ paddingRight: '0px', paddingLeft: '0px' }} >
-                        <div className="flex-shrink-0 " style={{ width: '100%', height: '100%', paddingRight: '0px', backgroundColor: '#a2baba' }}>
+
+                        <div className="flex-shrink-0 " style={{ width: '100%', height: '100%', paddingRight: '0px', backgroundColor: '#212529', paddingLeft: '25px', paddingTop: '10px' }}>
                             <div className="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                                <span className="fs-4 fw-semibold">Categories</span>
+                                <span className="fs-4 fw-semibold" style={{ color: 'white' }}>Categories</span>
                             </div>
                             <ul className="list-unstyled ps-0">
                                 <li className="mb-1">
-                                    <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" style={{ color: 'black', fontSize: '1.3rem', fontWeight: 'bold' }}>
-                                        <img src={Arrow} alt="arrow" style={{ width: '11px', height: '11px' }} />  Central
+                                    <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" style={{ color: 'white', fontSize: '1.3rem', fontWeight: 'bold' }}>
+                                        &gt;Central
                                     </button>
                                     <div className="collapse show" id="home-collapse">
                                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                             {/* <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize:'1rem' }} >Summer</Link></li>
                                             <li><Link to="#" className="link-dark rounded" style={{ textDecoration: 'none', fontSize:'1rem' }}>Winter</Link></li> */}
                                             <li>
-                                                <button className="btn btn-toggle rounded collapsed" data-bs-toggle="collapse" data-bs-target="#summer-collapse" aria-expanded="false" style={{ color: 'black', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '25px' }}>
-                                                    <img src={Arrow} alt="arrow" style={{ width: '9px', height: '9px' }} />  Summer
-                                                </button>
-                                                <div className="collapse" id="summer-collapse">
-                                                    <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                        <li><Link to="/tshirt" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }} >Tshirt</Link></li>
-                                                        <li><Link to="/jersey" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }}>Jersey</Link></li>
+                                                <Link to="/summer" style={{ color: 'white', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '40px', textDecoration: 'none' }}>
+                                                    Summer
+                                                </Link>
 
-                                                    </ul> </div>
 
                                             </li>
-                                            <button className="btn btn-toggle rounded collapsed" data-bs-toggle="collapse" data-bs-target="#winter-collapse" aria-expanded="false" style={{ color: 'black', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '25px' }}>
-                                                <img src={Arrow} alt="arrow" style={{ width: '9px', height: '9px' }} />  Winter
-                                            </button>
-                                            <div className="collapse" id="winter-collapse">
-                                                <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                    <li><Link to="hoodie" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }} >Hoodie</Link></li>
-                                                    <li><Link to="sweatshirt" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }}>Sweatshirt</Link></li>
+                                            <Link to="/winter" style={{ color: 'white', fontSize: '1.1rem', fontWeight: 'bold', paddingLeft: '40px', textDecoration: 'none' }}>
+                                                Winter
+                                            </Link>
 
-                                                </ul> </div>
                                             <li>
 
                                             </li>
@@ -85,21 +94,41 @@ export default function () {
                                 </li>
 
                                 <li className="mb-1">
-                                    <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false" style={{ color: 'black', fontSize: '1.3rem', fontWeight: 'bold' }}>
-                                        <img src={Arrow} alt="arrow" style={{ width: '11px', height: '11px' }} />  Departmental
+                                    <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false" style={{ color: 'white', fontSize: '1.3rem', fontWeight: 'bold' }}>
+                                        &gt; Departmental
                                     </button>
                                     <div className="collapse" id="dashboard-collapse">
-                                        <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><Link to="/cse" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }} >CSE</Link></li>
-                                            <li><Link to="/eee" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }}>EEE</Link></li>
-                                            <li><Link to="/mpe" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }}>MPE</Link></li>
-                                            <li><Link to="/cee" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }}>CEE</Link></li>
-                                            <li><Link to="/btm" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px' }}>BTM</Link></li>
+                                        <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small" >
+                                            <li><Link to="/cse" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }} >CSE</Link></li>
+                                            <li><Link to="/eee" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>EEE</Link></li>
+                                            <li><Link to="/mpe" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>MPE</Link></li>
+                                            <li><Link to="/cee" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>CEE</Link></li>
+                                            <li><Link to="/btm" style={{ textDecoration: 'none', fontSize: '1rem', paddingLeft: '40px', color: 'white' }}>BTM</Link></li>
                                         </ul>
                                     </div>
                                 </li>
 
-                                <hr style={{ height: '2px', color: 'black', border: '2px solid black' }} />
+                                <hr style={{ height: '2px', color: 'black', border: '2px solid black', marginBottom: '40px' }} />
+
+
+                                <li className="mb-1" style={{ marginLeft: '10px' }}>
+                                    <div className="d-flex align-items-center">
+                                        <span className="fs-5 fw-semibold" style={{ color: 'white', marginBottom: '10px' }}>Price Range</span>
+                                    </div>
+                                    <div>
+
+                                        <input type="number" placeholder="Min Price" step="1" value={minPrice}
+                                            onChange={(e) => setMinPrice(e.target.value)} style={{ marginBottom: '10px', backgroundColor: 'white', color: 'black', width: '150px' }} />
+                                        <input type="number" placeholder="Max Price" step="1" value={maxPrice}
+                                            onChange={(e) => setMaxPrice(e.target.value)} style={{ marginBottom: '10px', backgroundColor: 'white', color: 'black', width: '150px' }} />
+                                        <div>  <button className="btn" onClick={handlePriceFilter} style={{ marginBottom: '10px', backgroundColor: 'white', color: 'black', fontWeight: 'bold' }} >Apply</button>    
+                                       
+                                        </div>
+                                        <div>
+                                        <button className="btn" onClick={handleReset} style={{ marginBottom: '10px', marginTop:'5px',backgroundColor: 'transparent', color: 'white', fontWeight: 'italic',  borderColor:'white' }} >Reset</button>    
+                                        </div>
+                                    </div>
+                                </li>
 
                             </ul>
                         </div>
@@ -109,7 +138,7 @@ export default function () {
                         <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{ paddingLeft: '0', width: '100%' }}>
                             <div className="carousel-caption d-none d-md-block" style={{ zIndex: "10", top: "0" }}>
                                 <div className="d-flex" >
-                                    <input className="form-control me-2 placeholder-dark" type="search" placeholder="Search" aria-label="Search" style={{ backgroundColor: 'white', color: 'black' }} value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+                                    <input className="form-control me-2 placeholder-dark" type="search" placeholder="Search" aria-label="Search" style={{ backgroundColor: 'white', color: 'black' }} value={search} onChange={(e) => { setSearch(e.target.value) }} />
                                     <button className="custom-button" type="submit">Search</button>
                                 </div>
                             </div>
@@ -136,22 +165,23 @@ export default function () {
                             </button>
                         </div>
                         <div>
-                        <div className='container'>
-                            <div className='row'>
-                            {
-                                merchItem != [] ? merchItem.filter((item) =>
-                                    (item.name.toLowerCase().includes(search.toLowerCase()))
-                                ).map(filterItems => {
-                                    return (
-                                        <div key={filterItems._id} className='col-12 col-md-4 mb-4'>
-                                            <Card_merch merchitem={filterItems}
-                                            ></Card_merch>
-                                        </div>
-                                    )
-                                }) : <div>no data </div>
-                            }
-                        </div>
-                        </div> </div>
+                            <div className='container'>
+                                <div className='row'>
+                                    {
+                                        (filteredItems.length > 0 ? filteredItems.filter(item => item.name.toLowerCase().includes(search.toLowerCase())) : merchItem.filter(item =>
+                                            item.name.toLowerCase().includes(search.toLowerCase())
+                                        )).map(filterItems => {
+                                            return (
+                                                <div key={filterItems._id} className='col-12 col-md-4 mb-4'>
+                                                    <Card_merch merchitem={filterItems} />
+                                                </div>
+                                            );
+                                        })
+                                    }
+
+
+                                </div>
+                            </div> </div>
 
                     </div>
                 </div>
@@ -166,6 +196,21 @@ export default function () {
 {require('./cse_crick.jpg')} 
 {require('./cgpa.jpg')} 
 {require('./cse_letter.jpg')} 
+
+             <img src={Arrow} alt="arrow" style={{ width: '11px', height: '11px', backgroundColor:'whitesmoke' }} /> 
+ <div className="collapse" id="summer-collapse">
+                                                    <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                                        <li><Link to="/tshirt" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }} >Tshirt</Link></li>
+                                                        <li><Link to="/jersey" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }}>Jersey</Link></li>
+
+                                                    </ul> </div>
+                           <div className="collapse" id="winter-collapse">
+                                                <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                                    <li><Link to="hoodie" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }} >Hoodie</Link></li>
+                                                    <li><Link to="sweatshirt" className="link-dark rounded" style={{ textDecoration: 'none', fontSize: '0.9rem', paddingLeft: '45px' }}>Sweatshirt</Link></li>
+
+                                                </ul> </div>
+
 */
 
 /* 

@@ -12,15 +12,13 @@ export default function () {
         <Top />
         <Navbar />
         <div
-          className="hero-container"
-          
-        >
+          className="hero-container"  >
           <div className="hero-content">
             <p className="display-4" style={{fontSize:'5rem', fontWeight:'bold'}}>Welcome to StudentSphere</p>
             <p className="lead" style={{fontSize:'2rem', fontWeight:'bold'}} >Your One-Stop Hub for Campus Life</p>
-            <Link to="/eastShop" className="btn btn-primary btn-lg">Explore Now</Link>
+            <Link to="/eastShop" className="btn btn-lg" style={{backgroundColor:'white', color:'black', fontWeight:'bold'}}>Explore Now</Link>
           </div>
-        </div>
+        </div> 
         <Footer />
       </div>
     ) : ( 
@@ -28,13 +26,11 @@ export default function () {
         <Top />
         <Navbar />
         <div
-          className="hero-container"
-          
-        >
+          className="hero-container" >
           <div className="hero-content">
             <p className="display-4" style={{fontSize:'5rem', fontWeight:'bold'}}>Welcome to StudentSphere</p>
             <p className="lead" style={{fontSize:'2rem', fontWeight:'bold'}} >Your One-Stop Hub for Campus Life</p>
-            <Link to="/signup" className="btn btn-primary btn-lg">Get Started</Link>
+            <Link to="/signup" className="btn btn-lg" style={{backgroundColor:'white', color:'black', fontWeight:'bold'}}>Get Started</Link>
           </div>
         </div>
         <Footer />

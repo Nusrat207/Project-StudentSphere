@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import { useCart2, useDispatchCart2 } from '../components/contextred2';
 import jsPDF from 'jspdf';
+import bkash from './bkash.svg';
+import COD from './cod.png';
 import { ReactComponent as TrashIcon } from '../screens/trash.svg'
 export default function () {
     let mdata = useCart2();
@@ -41,7 +43,7 @@ export default function () {
         orderData = mdata;
         //console.log(orderData.shop);
         orderDate = new Date();
-        let response = await fetch("http://localhost:4000/api/OrderDataMerch", {
+        let response = await fetch("http://localhost:5000/api/OrderDataMerch", {
             // credentials: 'include',
             // Origin:"http://localhost:3000/login",
             
@@ -81,7 +83,7 @@ export default function () {
         const lineHeight = 8;
         const marginLeft = 10;
         doc.setFontSize(20);
-        doc.setFont("Helvetica", "bold");
+        doc.setFont("Helvetica");
         doc.text("IUT", pageWidth / 2, 20, { align: "center" });
         doc.setFontSize(16);
         doc.text("Receipt", pageWidth / 2, 40, { align: "center" });
@@ -95,7 +97,7 @@ export default function () {
         doc.setFontSize(12);
         let currentY = 100;
         orderData.forEach((item, index) => {
-            const itemText = `${item.name} x${item.quantity} - ${item.price.toFixed(2)} TK`;
+            const itemText = `${item.name} x${item.quantity} - Size: ${item.size} - ${item.price.toFixed(2)} TK`;
             doc.text(itemText, marginLeft, currentY);
             currentY += lineHeight;
         });
@@ -170,14 +172,17 @@ export default function () {
                     <label className="form-label fs-4">Payment:</label>
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="paymentMethod" id="bkash" value="bkash" onChange={handlePaymentMethodChange} />
-                        <label className="form-check-label" htmlFor="bkash">Bkash</label>
+                        <label className="form-check-label" htmlFor="bkash">
+                            Bkash  <img src={bkash} alt="Cart Icon" style={{ width: '55px', marginRight:'0px' }} />  </label>
                     </div>
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" onChange={handlePaymentMethodChange} />
-                        <label className="form-check-label" htmlFor="cash">Cash on Delivery</label>
+                        <label className="form-check-label" htmlFor="cash">Cash on Delivery
+                        <img src={COD} alt="Cart Icon" style={{ width: '25px', marginRight:'0px' }} />
+                        </label>
                     </div>
                 </div>
-                {/* Render the div for Bkash payment if Bkash is selected */}
+              
                 {paymentMethod === "bkash" && (
                     <div>
                         <label htmlFor="phoneNumber" className="form-label fs-4">Phone Number:</label>
