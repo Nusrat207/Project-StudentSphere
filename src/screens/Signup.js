@@ -58,7 +58,7 @@ export default function Signup() {
                                 <div className="card-body p-md-1">
                                     <div className="row justify-content-center">
                                         <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 ">
-                                            <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style={{color:'white'}}>Sign up</p>
+                                            <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style={{color:'white'}}>Create New Account</p>
                                             <Form className="mx-1 mx-md-4" style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'white' }} onSubmit={handleSubmit} >
                                                 <Form.Group className="mb-4" controlId="formBasicName">
                                                     <Form.Label>Name</Form.Label>
@@ -85,10 +85,10 @@ export default function Signup() {
                                                     <Form.Control type="password" placeholder="password (at least 6 digits)" name='password' value={credentials.password} onChange={onChange} className="placeholder-black" style={{ backgroundColor: 'white', color: 'black', borderRadius: '12px', border: '1px solid black'  }}/>
                                                 </Form.Group>
                                                 <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                    <Button variant="primary" type="submit" className="btn-lg">Sign Up</Button>
+                                                <Button style={{backgroundColor:'white', color:'black', fontSize:'15px', fontWeight:'bold'}} type="submit" className="btn-lg hover-btn">Sign Up</Button>
                                                 </div>
                                             </Form>
-                                            <p className="text-center mb-1" style={{color:'white'}}>Already have an account? <Link to="/login" className='btn btn-danger'>Login</Link> </p>
+                                            <p className="text-center mb-1" style={{color:'white'}}>Already have an account? <Link to="/login" className='btn btn-danger' style={{backgroundColor:'transparent', borderColor:'white', borderWidth:'2.5px'}}>Login</Link> </p>
                                         </div>
                                         <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                             <img src="https://cdni.iconscout.com/illustration/premium/thumb/man-using-laptop-5612503-4678408.png?f=webp" className="img-fluid" alt="Sample image" style={{ width: '80%', height: 'auto' }} />

@@ -1,5 +1,7 @@
-Link {
+/* styles.css */
 
+/* Styles for all .btn elements */
+.btn.special-btn {
     --border-width: 2.5px;
     appearance: none;
     position: relative;
@@ -8,9 +10,10 @@ Link {
     background-color: transparent;
     color: #fff;
     z-index: 2;
-   }
-   
-   button::after {
+  }
+  
+  /* Styles for the specific .btn with the additional class */
+  .btn.special-btn::after {
     --m-i: linear-gradient(#000, #000);
     --m-o: content-box, padding-box;
     content: "";
@@ -21,36 +24,34 @@ Link {
     height: 100%;
     padding: var(--border-width);
     border-radius: var(--border-radius);
-    background-image: conic-gradient(
-           white, #dcfcf6, #dcfcf6
-       );
+    background-image: conic-gradient(white, #dcfcf6, #dcfcf6);
     -webkit-mask-image: var(--m-i), var(--m-i);
     mask-image: var(--m-i), var(--m-i);
     -webkit-mask-origin: var(--m-o);
     mask-origin: var(--m-o);
-  
     mask-composite: exclude;
     -webkit-mask-composite: destination-out;
     filter: hue-rotate(0);
     animation: rotate-hue linear 500ms infinite;
     animation-play-state: paused;
-   }
-   
-   button:hover::after {
+  }
+  
+  .btn.special-btn:hover::after {
     animation-play-state: running;
-   }
-   
-   @keyframes rotate-hue {
+  }
+  
+  @keyframes rotate-hue {
     to {
-     filter: hue-rotate(1turn);
+      filter: hue-rotate(1turn);
     }
-   }
-   
-   button,
-   button::after {
+  }
+  
+  .btn,
+  .btn::after {
     box-sizing: border-box;
-   }
-   
-   button:active {
+  }
+  
+  .btn.special-btn:active {
     --border-width: 5px;
-   }
+  }
+  

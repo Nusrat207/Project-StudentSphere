@@ -37,8 +37,8 @@ export default function () {
         console.log(data, student_id, new Date())
         const location = selectedLocation;
         const payment = paymentMethod;
-        console.log(location);
-        console.log(payment);
+        //console.log(location);
+        //console.log(payment);
         orderData = data;
         //console.log(orderData.shop);
         orderDate = new Date();

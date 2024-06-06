@@ -4,10 +4,11 @@ import Footer from '../components/Footer'
 import Top from '../components/Top'
 import Carousel from '../components/Carousel'
 import Card from '../components/Card'
-
+import './buton.css';
 import { useState } from 'react'
 import { useEffect } from 'react'
 export default function  () {
+
     const [search, setSearch] = useState('');
     const [foodType, setfoodType] = useState([]);
     const [foodItem, setfoodItem] = useState([]);
@@ -21,7 +22,7 @@ export default function  () {
             }
         });
         response = await response.json();
-        console.log(response[0], response[1]);
+       // console.log(response[0], response[1]);
 
         setfoodItem(response[0]);
         setfoodType(response[1]);
@@ -44,9 +45,8 @@ export default function  () {
 
                     <div className="carousel-caption d-none d-md-block" style={{zIndex:"10"}}>
                         <div className="d-flex justify-content-center">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
-                          {/*   <button className="btn btn-outline-success" text-white bg-success type="submit">Search</button>
-                        */}</div>
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"  value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+                          </div>
                     </div>
 
                     <div className="carousel-item active">
@@ -71,6 +71,7 @@ export default function  () {
         </div>
         
          <div className='container'>
+       
                 {
                     foodType != []
                         ? foodType.map((data) => {
@@ -85,10 +86,6 @@ export default function  () {
                                 ).map(filterItems => {
                                         return (
                                             <div key={filterItems._id} className='col-12 col-md-6 col-lg-3'>
-                                               {/*  <Card foodName={filterItems.name}
-                                                    price={filterItems.price}
-                                                    imgSrc={filterItems.image}
-                                                ></Card> */}
                                                 <Card fooditem = {filterItems}
                                                 ></Card> 
                                             </div>
@@ -101,8 +98,6 @@ export default function  () {
                             )
                         }) : <div>""""</div>
                 }
-
-
             </div> 
         
         <Footer></Footer>

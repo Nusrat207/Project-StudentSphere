@@ -76,7 +76,7 @@ export default function Login() {
                 <div className="card-body p-md-1">
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 ">
-                      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style={{color:'white'}}>Login</p>
+                      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style={{color:'white'}}>Welcome Back!</p>
                       <Form className="mx-1 mx-md-4" style={{ fontSize:'1.25rem', fontWeight:'bold', color:'white' }} onSubmit={handleSubmit}  >
                         <Form.Group className="mb-4" controlId="formBasicStudentId">
                           <Form.Label>Student ID</Form.Label>
@@ -93,10 +93,10 @@ export default function Login() {
                           
                         </div>
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <Button id="buton" style={{backgroundColor:'white', color:'black'}} type="submit" className="btn-lg">Login</Button>
+                          <Button style={{backgroundColor:'white', color:'black', fontWeight:'bold', fontSize:"18px"}} type="submit" className="btn-lg hover-btn">Login</Button>
                         </div>
                         <div style={{paddingTop:'20px'}}>
-                            <p className="mb-3" style={{paddingRight:'120px'}}>Don't have an account?  <Link to="/signup" id='Link' className='btn' style={{backgroundColor:'transparent', borderColor:'white', borderWidth:'2.5px'}}>Sign Up</Link> </p>
+                            <p className="mb-3" style={{paddingRight:'120px'}}>Don't have an account?  <Link to="/signup" id='Link' className='btn ' style={{backgroundColor:'transparent', borderColor:'white', borderWidth:'2.5px'}}>Sign Up</Link> </p>
                           </div>
                       </Form>
                     </div>
@@ -114,22 +114,3 @@ export default function Login() {
     </div>
   );
 }
-
- /*  let sid = credentials.student_id;
-            try {
-              let userData = await user.findOne({ sid });
-              if (!userData) {
-                  console.log("errorr");
-              }
-
-              let name = 'userData.name'
-              let mail = 'userData.mail';
-              let phone= 'userData.phone';
-              let dept='userData.dept';
-
-              localStorage.setItem("name", name);
-              localStorage.setItem("mail", mail);
-              localStorage.setItem("phone", phone);
-              localStorage.setItem("dept", dept); 
-              
-            } catch(error){ console.log(error)} */

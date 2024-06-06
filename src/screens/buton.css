@@ -1,36 +1,95 @@
-button {
- padding: 0.8em 1.8em;
- border: 2px solid #17C3B2;
- position: relative;
- overflow: hidden;
- background-color: transparent;
- text-align: center;
- text-transform: uppercase;
- font-size: 16px;
- transition: .9s;
- z-index: 1;
- font-family: inherit;
- color: #17C3B2;
-}
+.hover-btn {
+    padding: 0.5em 1.5em;
+    border: 1px solid #17C3B2;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    
+    font-size: 16px;
+    transition: 0.9s;
+    z-index: 1;
+    font-family: inherit;
+    color: #17C3B2;
+  }
+  
+  .hover-btn::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #17C3B2;
+    transition: 0.6s ease;
+    display: block;
+    z-index: -1;
+  }
+  
+  .hover-btn:hover::before {
+    width: 105%;
+  }
+  
+  .hover-btn:hover {
+    color: #111;
+  }
 
-button::before {
- content: '';
- width: 0;
- height: 300%;
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%) rotate(45deg);
- background: #17C3B2;
- transition: .5s ease;
- display: block;
- z-index: -1;
-}
 
-button:hover::before {
- width: 105%;
-}
 
-button:hover {
- color: #111;
-}
+
+  .glow-btn {
+    text-decoration: none;
+    position: relative;
+    border: none;
+    font-size: 26px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    width: 9em;
+    height: 2.5em;
+    line-height: 2em;
+    text-align: center;
+    background: linear-gradient(90deg, #e6f7f7, white, #f5fcfc);
+    background-size: 300%;
+    border-radius: 15px;
+    z-index: 1;
+  }
+  
+  .glow-btn:hover {
+    animation: ani 8s linear infinite;
+    border: none;
+  }
+  
+  @keyframes ani {
+    0% {
+      background-position: 0%;
+    }
+  
+    100% {
+      background-position: 400%;
+    }
+  }
+  
+  .glow-btn:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #e6f7f7, white, #f5fcfc);
+    background-size: 400%;
+    border-radius: 20px;
+    transition: 1s;
+  }
+  .glow-btn:hover::before {
+    filter: blur(20px);
+  }
+  
+  .glow-btn:active{
+    background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  }
+  

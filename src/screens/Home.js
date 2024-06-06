@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Top from '../components/Top'
 import './styles.css';
+import './buton.css';
 import { Link } from 'react-router-dom';
 
 export default function () {
@@ -16,7 +17,7 @@ export default function () {
           <div className="hero-content">
             <p className="display-4" style={{fontSize:'5rem', fontWeight:'bold'}}>Welcome to StudentSphere</p>
             <p className="lead" style={{fontSize:'2rem', fontWeight:'bold'}} >Your One-Stop Hub for Campus Life</p>
-            <Link to="/eastShop" className="btn btn-lg" style={{backgroundColor:'white', color:'black', fontWeight:'bold'}}>Explore Now</Link>
+            <Link to="/eastShop" className="btn glow-btn" style={{backgroundColor:'white', color:'black', fontWeight:'bold'}}>Explore Now</Link>
           </div>
         </div> 
         <Footer />
@@ -30,7 +31,7 @@ export default function () {
           <div className="hero-content">
             <p className="display-4" style={{fontSize:'5rem', fontWeight:'bold'}}>Welcome to StudentSphere</p>
             <p className="lead" style={{fontSize:'2rem', fontWeight:'bold'}} >Your One-Stop Hub for Campus Life</p>
-            <Link to="/signup" className="btn btn-lg" style={{backgroundColor:'white', color:'black', fontWeight:'bold'}}>Get Started</Link>
+            <Link to="/signup" className="btn glow-btn" style={{backgroundColor:'white', color:'black', fontWeight:'bold'}}>Get Started</Link>
           </div>
         </div>
         <Footer />
