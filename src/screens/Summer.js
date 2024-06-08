@@ -41,17 +41,36 @@ export default function () {
         const min = parseFloat(minPrice);
         const max = parseFloat(maxPrice);
         if (!isNaN(min) && !isNaN(max)) {
-            const filtered = merchItem.filter(item => item.price >= min && item.price <= max &&  item.season === "summer" &&
-            item.tag === "central");
+            const filtered = merchItem.filter(item => item.price >= min && item.price <= max && item.season === "summer" &&
+                item.tag === "central");
             setFilteredItems(filtered);
         }
     };
 
+
+    const [selectedBrands, setSelectedBrands] = useState([]);
+
     const navigate = useNavigate();
-    const handleReset = () =>{
+    const handleReset = () => {
         setFilteredItems([]);
+        setMinPrice('');
+        setMaxPrice('');
         navigate("/summer");
     }
+    const handleBrandFilter = (brand) => {
+        const index = selectedBrands.indexOf(brand);
+        if (index === -1) {
+            setSelectedBrands([...selectedBrands, brand]);
+        } else {
+            const updatedBrands = [...selectedBrands];
+            updatedBrands.splice(index, 1);
+            setSelectedBrands(updatedBrands);
+        }
+    };
+
+    const handleClearAllBrands = () => {
+        setSelectedBrands([]);
+    };
 
     return (
         <div>
@@ -124,12 +143,52 @@ export default function () {
                                             onChange={(e) => setMinPrice(e.target.value)} style={{ marginBottom: '10px', backgroundColor: 'white', color: 'black', width: '150px' }} />
                                         <input type="number" placeholder="Max Price" step="1" value={maxPrice}
                                             onChange={(e) => setMaxPrice(e.target.value)} style={{ marginBottom: '10px', backgroundColor: 'white', color: 'black', width: '150px' }} />
-                                          <div>  <button className="btn" onClick={handlePriceFilter} style={{ marginBottom: '10px', backgroundColor: 'white', color: 'black', fontWeight: 'bold' }} >Apply</button>    </div>
-                                          <div>
-                                        <button className="btn" onClick={handleReset} style={{ marginBottom: '10px', marginTop:'5px',backgroundColor: 'transparent', color: 'white', fontWeight: 'italic',  borderColor:'white' }} >Reset</button>    
+                                        <div>  <button className="btn" onClick={handlePriceFilter} style={{ marginBottom: '10px', backgroundColor: 'white', color: 'black', fontWeight: 'bold' }} >Apply</button>    </div>
+                                        <div>
+                                            <button className="btn" onClick={handleReset} style={{ marginBottom: '10px', marginTop: '5px', backgroundColor: 'transparent', color: 'white', fontWeight: 'italic', borderColor: 'white' }} >Reset</button>
                                         </div>
                                     </div>
                                 </li>
+
+                                {/* adding brand filter */}
+                                <hr style={{ height: '2px', color: 'black', border: '2px solid black', marginBottom: '40px' }} />
+
+                                <li className="mb-1" style={{ marginLeft: '10px' }}>
+                                    <div className="d-flex align-items-center">
+                                        <span className="fs-5 fw-semibold" style={{ color: 'white', marginBottom: '10px' }}>Brands</span>
+                                    </div>
+                                    <div style={{ marginBottom: '10px' }}>
+                                        <div className="form-check" style={{ marginBottom: '10px' }}>
+                                            <input className="form-check-input" type="checkbox" value="portify" id="brandPortify" checked={selectedBrands.includes('sportify')} onChange={() => handleBrandFilter('sportify')} />
+                                            <label className="form-check-label" htmlFor="brandPortify" style={{ color: 'white' }}>
+                                                Sportify
+                                            </label>
+                                        </div>
+                                        <div className="form-check" style={{ marginBottom: '10px' }}>
+                                            <input className="form-check-input" type="checkbox" value="frostix" id="brandFrostix" checked={selectedBrands.includes('frostix')} onChange={() => handleBrandFilter('frostix')} />
+                                            <label className="form-check-label" htmlFor="brandFrostix" style={{ color: 'white' }}>
+                                                Frostix
+                                            </label>
+                                        </div>
+                                        <div className="form-check" style={{ marginBottom: '10px' }}>
+                                            <input className="form-check-input" type="checkbox" value="teerific" id="brandTeerific" onChange={() => handleBrandFilter('teerific')} checked={selectedBrands.includes('teerific')} />
+                                            <label className="form-check-label" htmlFor="brandTeerific" style={{ color: 'white' }}>
+                                                Teerific
+                                            </label>
+                                        </div>
+                                        <div className="form-check" style={{ marginBottom: '10px' }}>
+                                            <input className="form-check-input" type="checkbox" value="unijacket" id="brandUniJacket" onChange={() => handleBrandFilter('unijacket')} checked={selectedBrands.includes('unijacket')} />
+                                            <label className="form-check-label" htmlFor="brandUniJacket" style={{ color: 'white' }}>
+                                                UniJacket
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div> <button className="btn" onClick={handleClearAllBrands} style={{ marginBottom: '10px', marginTop: '5px', backgroundColor: 'transparent', color: 'white', fontWeight: 'italic', borderColor: 'white' }}>
+                                        Clear All</button>    </div>
+                                </li>
+
+
+                                {/* shesh filter */}
 
                             </ul>
                         </div>
@@ -169,18 +228,6 @@ export default function () {
                             <div className='container'>
                                 <div className='row'>
                                     {/*
-                                merchItem != [] ? merchItem.filter((item) =>
-                                (item.name.toLowerCase().includes(search.toLowerCase()) && item.season === "summer" && item.tag === "central")
-                                ).map(filterItems => {
-                                    return (
-                                        <div key={filterItems._id} className='col-12 col-md-4 mb-4'>
-                                            <Card_merch merchitem={filterItems}
-                                            ></Card_merch>
-                                        </div>
-                                    )
-                                }) : <div>no data </div>
-                            */}
-                                    {
                                         (filteredItems.length > 0 ? filteredItems : merchItem.filter(item =>
                                             item.name.toLowerCase().includes(search.toLowerCase()) &&
                                             (!minPrice || item.price >= minPrice) &&
@@ -195,6 +242,20 @@ export default function () {
                                                 </div>
                                             );
                                         })
+                                    */}
+                                   
+                                    {(filteredItems.length > 0 ? filteredItems : merchItem)
+                                        .filter(item => selectedBrands.length === 0 || selectedBrands.includes(item.brand.toLowerCase()))
+                                        .filter(item =>
+                                            item.name.toLowerCase().includes(search.toLowerCase()) &&
+                                            item.season === "summer" &&
+                                            item.tag === "central"
+                                        )
+                                        .map(filterItems => (
+                                            <div key={filterItems._id} className='col-12 col-md-4 mb-4'>
+                                                <Card_merch merchitem={filterItems} />
+                                            </div>
+                                        ))
                                     }
 
                                 </div>

@@ -9,7 +9,26 @@ export default function () {
     let data = useCart();
     let dispatch = useDispatchCart();
 
-    if (data.length === 0) {
+    const now = new Date();
+    const hours = now.getHours();
+
+    let currentMealTime;
+    if (hours >= 6 && hours < 11) {
+        currentMealTime = "Breakfast";
+    } else if (hours >= 11 && hours < 16) {
+        currentMealTime = "Lunch";
+    } else if (hours >= 19 && hours <= 23) {
+        currentMealTime = "Dinner";
+    } else {
+        currentMealTime = null;
+    }
+
+    const filteredData = data.filter(item => {
+        return (item.meal === currentMealTime || item.meal === "Snacks");
+    });
+
+
+    if (filteredData.length === 0) {
         return (
             <div>
                 <div className='m-5 w-100 text-center fs-3'>The Cart is Empty!</div>
@@ -39,7 +58,7 @@ export default function () {
         const payment = paymentMethod;
         //console.log(location);
         //console.log(payment);
-        orderData = data;
+        orderData = filteredData;
         //console.log(orderData.shop);
         orderDate = new Date();
         let response = await fetch("http://localhost:5000/api/OrderData", {
@@ -49,7 +68,7 @@ export default function () {
             },
             body: JSON.stringify({
                 student_id: student_id,
-                order_data: data,
+                order_data: filteredData,
                 order_date: new Date().toDateString(),
                 location: location,
                 payment: payment
@@ -77,36 +96,36 @@ export default function () {
 
     const timestamp = Date.now();
     const pdfName = `receipt_${timestamp}.pdf`;
-   
+
     const generatePDF = () => {
         const doc = new jsPDF();
         doc.setFont("Helvetica");
         const pageWidth = doc.internal.pageSize.width;
         const lineHeight = 8;
         const marginLeft = 10;
-    
+
         doc.setFontSize(12);
         doc.text("CDS", pageWidth / 2, 20, { align: "center" });
         doc.setFontSize(10);
         doc.text("IUT, Boardbazar, Gazipur", pageWidth / 2, 30, { align: "center" });
-    
+
         doc.setFontSize(16);
         doc.text("Receipt", pageWidth / 2, 50, { align: "center" });
-    
+
         doc.setFontSize(10);
         doc.text(`Customer's Student ID: ${studentId}`, marginLeft, 70);
         doc.text(`Order Date: ${orderDate}`, marginLeft, 80);
-    
+
         doc.setFontSize(12);
         doc.text("Order Details:", marginLeft, 100);
         doc.setFontSize(10);
         let currentY = 110;
         orderData.forEach((item, index) => {
             const itemText = `${item.shop} shop: ${item.name} x${item.quantity} - ${item.price.toFixed(2)} TK`;
-        doc.text(itemText, marginLeft, currentY);
-        currentY += lineHeight;
+            doc.text(itemText, marginLeft, currentY);
+            currentY += lineHeight;
         });
-    
+
         doc.setFontSize(12);
         doc.text(`Deliver To: ${selectedLocation}`, marginLeft, currentY + 10);
 
@@ -117,18 +136,20 @@ export default function () {
 
         doc.save(pdfName);
     };
-    
-    
-    let totalPrice = data.reduce((total, food) => total + food.price, 0)
+
+
+    let totalPrice = filteredData.reduce((total, food) => total + food.price, 0)
     return (
         <div>
+           
             <div className='container m-auto mt-5 table-responsive-sm table-responsive-md' >
+            <div style={{ paddingBotton: '5px', marginBottom:'5px', fontStyle: 'italic', opacity: '0.8' }}>N.B.: Only items for the current meal time will be displayed in your cart. </div>
                 <table className='table table-hover' style={{ marginBottom: '30px', paddingBottom: '20px' }}>
                     <thead className='text-success' style={{ fontSize: '1.9rem', fontStyle: 'italic' }}>
                         <tr  >
                             <th scope='col'>#</th>
                             <th scope='col'>Shop</th>
-
+                            <th scope='col'>Meal</th>
                             <th scope='col'>Name</th>
                             <th scope='col'>Quantity</th>
                             <th scope='col'>Amount</th>
@@ -138,16 +159,28 @@ export default function () {
                     </thead>
                     <tbody >
                         {
-                            data.map((food, index) => (
+                            filteredData.map((food, index) => (
                                 <tr style={{ fontSize: '1.4rem', color: '#dcdede' }}>
                                     <th scope='row'>{index + 1}</th>
                                     <td>{food.shop}</td>
-
+                                    <td>{food.meal}</td>
                                     <td>{food.name}</td>
                                     <td>{food.quantity}</td>
                                     <td>{food.price}</td>
                                     <td>
-                                        <button type="button" className="btn p-0" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}>
+                                        <button type="button" className="btn p-0" onClick={() => {
+                                            dispatch({
+                                                type: "REMOVE",
+                                                id: food.id,
+                                                name: food.name,
+                                                meal: food.meal,
+                                                price: food.price,
+                                                shop: food.shop,
+                                                quantity: food.quantity,
+                                                image: food.image,
+                                                time:food.time
+                                            })
+                                        }}>
                                             <TrashIcon />
                                         </button>
                                     </td>
@@ -175,16 +208,16 @@ export default function () {
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="paymentMethod" id="bkash" value="bkash" onChange={handlePaymentMethodChange} />
                         <label className="form-check-label" htmlFor="bkash">
-                        Bkash <img src={bkash} alt="Cart Icon" style={{ width: '55px', marginRight:'0px' }} /> </label>
+                            Bkash <img src={bkash} alt="Cart Icon" style={{ width: '55px', marginRight: '0px' }} /> </label>
                     </div>
                     <div className="form-check">
                         <input className="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" onChange={handlePaymentMethodChange} />
                         <label className="form-check-label" htmlFor="cash">
-                        Cash on Delivery <img src={COD} alt="Cart Icon" style={{ width: '25px', marginRight:'0px' }} />
-                            </label>
+                            Cash on Delivery <img src={COD} alt="Cart Icon" style={{ width: '25px', marginRight: '0px' }} />
+                        </label>
                     </div>
                 </div>
-               
+
                 {paymentMethod === "bkash" && (
                     <div>
                         <label htmlFor="phoneNumber" className="form-label fs-4">Phone Number:</label>

@@ -9,7 +9,7 @@ const Receipt = ({ bookingInfo, onClose }) => {
         <p>Date: {bookingInfo.date}</p>
         <p>Time Slot: {bookingInfo.time}</p>
         <p>Customer Name: {bookingInfo.user}</p>
-        <button onClick={onClose}>Close</button>
+        <button style={{backgroundColor:'#ffc9c9', borderWidth:'3.5px', borderColor:'red', color:'black', fontWeight:'bold'}} onClick={onClose}>Close</button>
       </div>
     </div>
   );

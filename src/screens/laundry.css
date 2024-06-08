@@ -1,0 +1,370 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:700);
+
+
+
+.wrapper {
+    position: absolute;
+    z-index: 1;
+    height: 360px;
+    width: 290px;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -145px;
+}
+
+/* Washing machine */
+.washingmachine {
+    position: absolute;
+    height: 360px;
+    width: 290px;
+    border-top: 14px solid #97BDAF;
+    border-radius: 4px;
+    background-color: #E4F2ED;
+}
+
+/* Shadow */
+.washingmachine:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -145px;
+    width: 290px;
+    height: 20px;
+    box-shadow: 0 20px 40px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Lint filter */
+.washingmachine:after {
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 15px;
+    width: 70px;
+    height: 35px;
+    border-radius: 2px;
+    border: 1px solid #B1CBC2;
+}
+
+/* Door */
+.washingmachine .door {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -84px;
+    width: 150px;
+    height: 150px;
+    border: 22px solid #97BDAF;
+    border-radius: 97px;
+    background-image: linear-gradient(to bottom, rgba(73, 96, 88, 0.85) 0%, rgba(87, 115, 105, 0.85) 100%);
+    transform: translateZ(0);
+    animation: close 0.9s ease-in 0s 1 forwards;
+}
+
+/* Open door on hover */
+.washingmachine:hover .door {
+    transform: translateZ(0);
+    animation: open 0.9s ease-in 0s 1 forwards;
+}
+
+/* Animate to open */
+@keyframes open {
+    from {
+        transform: perspective(1000px) rotateY(0deg);
+        transform-origin: 0% 0%;
+    }
+    to {
+        transform: perspective(1000px) rotateY(-105deg);
+        transform-origin: 0% 0%;
+    }
+}
+
+/* Animate to closed */
+@keyframes close {
+    from {
+        transform: perspective(1000px) rotateY(-105deg);
+        transform-origin: 0% 0%;
+    }
+    to {
+        transform: perspective(1000px) rotateY(0deg);
+        transform-origin: 0% 0%;
+    }
+}
+
+/* Drum */
+.washingmachine .drum {
+    position: absolute;
+    top: 113px;
+    left: 50%;
+    margin-left: -74px;
+    width: 140px;
+    height: 140px;
+    border: 4px solid #97BDAF;
+    border-radius: 97px;
+    background-color: #3A4E47;
+}
+
+/* Inner text */
+.washingmachine .drum:before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: "^‿^";
+    color: #FFF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    line-height: 140px;
+    opacity: 0;
+    transform: translateZ(0);
+    transition: opacity .5s ease-in-out;
+}
+
+/* Fade in text on hover */
+.washingmachine:hover .drum:before {
+    opacity: 1;
+}
+
+/* Hinge */
+.washingmachine .drum:after {
+    position: absolute;
+    content: "";
+    top: 63px;
+    left: -11px;
+    width:10px;
+    height: 16px;
+    background-color: #6D8C81;
+    border-radius: 2px;
+}
+
+/* Handle */
+.washingmachine .door:before {
+    position: absolute;
+    content: "";
+    top: 45px;
+    right: -16px;
+    width: 18px;
+    height: 28px;
+    background-color: #6D8C81;
+    border-radius: 2px;
+}
+
+/* Tray */
+.washingmachine .tray {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 90px;
+    height: 25px;
+    border-top: 10px solid #C0D9D0;
+    background-color: #97BDAF;
+    border-radius: 2px;
+}
+
+/* Dial */
+.washingmachine .dial {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: #97BDAF;
+    border: 5px solid #C0D9D0;
+    border-radius: 15px;
+}
+
+/* Buttons */
+.washingmachine .buttons,
+.washingmachine .buttons:before,
+.washingmachine .buttons:after {
+    position: absolute;
+    top: 22px;
+    right: 60px;
+    width: 10px;
+    height: 15px;
+    background-color: #97BDAF;
+    border-radius: 2px;
+}
+
+.washingmachine .buttons:before,
+.washingmachine .buttons:after {
+    content: "";
+    top: 0;
+}
+
+.washingmachine .buttons:before { right: 15px; }
+.washingmachine .buttons:after { right: 30px; }
+
+/* Pilot light */
+.washingmachine .pilot {
+    position: absolute;
+    top: 28px;
+    right: 110px;
+    width: 4px;
+    height: 4px;
+    background-color: #9E0004;
+    border-radius: 2px;
+}
+
+.washingmachine:hover .pilot {
+    background-color: #DB0006;
+    box-shadow: 0 0 5px 1px rgba(211, 5, 11, 0.4);
+}
+
+
+
+
+
+.wash-btn {
+    position: relative;
+    padding: 4px 14px;
+    background: #1f8acc;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: 3px solid #1f8acc;
+    border-radius: 8px;
+    box-shadow: 0 0 0 #fec1958c;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .star-1 {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+  }
+  
+  .star-2 {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-3 {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-4 {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-5 {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-6 {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 0 #fffdef);
+    z-index: -5;
+    transition: all 0.8s ease;
+  }
+  
+  .wash-btn:hover {
+    background: transparent;
+    color: #24a0ed;
+    box-shadow: 0 0 25px #24a0ed;
+  }
+  
+  .wash-btn:hover .star-1 {
+    position: absolute;
+    top: -80%;
+    left: -30%;
+    width: 25px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .wash-btn:hover .star-2 {
+    position: absolute;
+    top: -25%;
+    left: 10%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .wash-btn:hover .star-3 {
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .wash-btn:hover .star-4 {
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    width: 8px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .wash-btn:hover .star-5 {
+    position: absolute;
+    top: 25%;
+    left: 115%;
+    width: 15px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .wash-btn:hover .star-6 {
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    width: 5px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #fffdef);
+    z-index: 2;
+  }
+  
+  .fil0 {
+    fill: #fffdef;
+  }
+  
+  

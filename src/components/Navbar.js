@@ -121,41 +121,34 @@ export default function Navbar() {
                 {/* Food Cart */} { }  {foodata.length !== 0 ? <Badge pill bg="danger">{foodata.length}</Badge> : null}
               </div>
               {cartView ? <Modal onClose={() => setcartView(false)}><Cart></Cart></Modal> : ""}
-              {/* <div>
-                <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold' }} to="/mp">My Profile</div> 
-              
-                  <div className="btn bg-white mx-1" style={{ fontSize: '1.3rem', color: '#1a5c56', fontWeight: 'bold' }} to="/cart">Cart</div>
-                  <div className="btn bg-white text-danger mx-1" style={{ fontSize: '1.3rem', fontWeight: 'bold' }} onClick={handleLogout}>Logout</div>
-                </div>
-    </div> */}
 
-<div className="navbar-nav">
+              <div className="navbar-nav">
                 <div className="dropdown">
                   <button className="btn bg-white mx-1 dropdown-toggle" style={{ color: '#1a5c56', fontWeight: 'bold' }} type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src={personGear} alt="Profile Icon" style={{ width: '30px', height: '30px' }} />
                   </button>
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown" style={{ backgroundColor: 'white', color: 'black', fontWeight: 'bold' }}>
                     <li><Link className="dropdown-item" to="/myprofile" style={{ color: 'black', fontWeight: 'bold' }}>
-                      
-                    <img src={Person} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight:'8px', marginLeft:'4px' }} />
+
+                      <img src={Person} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight: '8px', marginLeft: '4px' }} />
                       My Profile</Link></li>
                     <li>
-                     <div className="dropdown2">
-                    <button className="dropdown-item btn bg-white mx-1 " style={{ color: 'black', fontWeight: 'bold' }}  data-bs-toggle="dropdown2" aria-expanded="false">
-                    <img src={Orders} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight:'8px' }} />
-                      My Orders</button>
-                    <ul className="dropdown2-menu dropdown2-menu-end" aria-labelledby="profileDropdown" style={{ backgroundColor: 'white', color: 'black', fontWeight: 'bold', listStyleType: 'none'  }}>
-                    <li><Link className="dropdown2-item" to="/mealHistory" style={{ textDecoration:'none',color: 'black', fontWeight: 'bold', marginLeft:'12px' }}>Meals</Link></li>
-                    <li><Link className="dropdown2-item" to="/merchHistory" style={{ textDecoration:'none', color: 'black', fontWeight: 'bold', marginLeft:'12px' }}>Merch</Link></li>
-                    </ul>
-                    </div>
+                      <div className="dropdown2">
+                        <button className="dropdown-item btn bg-white mx-1 " style={{ color: 'black', fontWeight: 'bold' }} data-bs-toggle="dropdown2" aria-expanded="false">
+                          <img src={Orders} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight: '8px' }} />
+                          My Orders</button>
+                        <ul className="dropdown2-menu dropdown2-menu-end" aria-labelledby="profileDropdown" style={{ backgroundColor: 'white', color: 'black', fontWeight: 'bold', listStyleType: 'none' }}>
+                          <li><Link className="dropdown2-item" to="/mealHistory" style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold', marginLeft: '12px' }}>Meals</Link></li>
+                          <li><Link className="dropdown2-item" to="/merchHistory" style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold', marginLeft: '12px' }}>Merch</Link></li>
+                        </ul>
+                      </div>
                     </li>
-                    
+
                     <li><Link className="dropdown-item" to="/edit-profile" style={{ color: 'black', fontWeight: 'bold' }}>
-                    <img src={Edit} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight:'8px', marginLeft:'5px' }} />
+                      <img src={Edit} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight: '8px', marginLeft: '5px' }} />
                       Edit Profile</Link></li>
                     <li><button className="dropdown-item" onClick={handleLogout} style={{ color: 'black', fontWeight: 'bold' }}>
-                    <img src={Logout} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight:'8px', marginLeft:'6px' }} />
+                      <img src={Logout} alt="Profile Icon" style={{ width: '15px', height: '15px', marginRight: '8px', marginLeft: '6px' }} />
                       Logout</button></li>
                   </ul>
                 </div>

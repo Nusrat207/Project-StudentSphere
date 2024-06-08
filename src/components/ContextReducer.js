@@ -8,14 +8,25 @@ const reducer = (state, action) => {
         case "ADD":
             return [...state,
             {
-                id: action.id, name: action.name, price: action.price, shop: action.shop,
-                quantity: action.quantity, image: action.image
+                id: action.id, name: action.name, meal:action.meal, price: action.price, shop: action.shop,
+                quantity: action.quantity, image: action.image, time:action.time
             }]
 
-        case "REMOVE":
-            let newArr = [...state]
-            newArr.splice(action.index, 1)
-            return newArr;
+       // case "REMOVE":
+       //     let newArr = [...state]
+       //     newArr.splice(action.index, 1)
+       //     return newArr;
+       case "REMOVE":
+    return state.filter(item => 
+        item.id !== action.id || 
+        item.name !== action.name || 
+        item.meal !== action.meal || 
+        item.price !== action.price || 
+        item.shop !== action.shop || 
+        item.quantity !== action.quantity || 
+        item.image !== action.image ||
+        item.time !== action.time
+    );
 
         case "DROP":
             let empArray = []
