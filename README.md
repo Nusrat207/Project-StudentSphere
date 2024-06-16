@@ -1,8 +1,8 @@
 ## StudentSphere is a comprehensive web platform developed as part of a System Analysis and Design course. Addressing the fragmented nature of current university student services, it integrates essential functionalities such as canteen food ordering, university merchandise ordering, scheduler, and laundry management into a single, user-friendly interface. Designed to enhance convenience and efficiency, StudentSphere aims to provide students with a seamless experience for managing their everyday necessities on campus.
 
-
-
-
+<br>
+<br>
+<br>
 
 ## Available Scripts
 In the project directory, you can run:
